@@ -1,13 +1,12 @@
 #!/usr/bin/env cwl-runner
-# This tool description was generated automatically by argparse2tool ver. 0.4.3-2
-# To generate again: $ encode_idr.py --generate_cwl_tool
-# Help: $ encode_idr.py --help_arg2cwl
 
-cwlVersion: "cwl:v1.0"
+
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [python, encode_idr.py]
-
+requirements:
+  - class: InlineJavascriptRequirement
 doc: |
   ENCODE DCC IDR. NarrowPeak or RegionPeak only.
 
@@ -32,8 +31,7 @@ inputs:
       position: 3
 
   prefix:
-    type: ["null", string]
-    default: idr
+    type: string?
     doc: Prefix basename for output IDR peak.
     inputBinding:
       prefix: --prefix 
@@ -47,18 +45,15 @@ inputs:
       prefix: --peak-type 
 
   idr_thresh:
-    type: ["null", float]
-    default: 0.1
+    type: float?
     doc: IDR threshold.
     inputBinding:
       prefix: --idr-thresh 
 
   idr_rank:
     type:
-    - "null"
-    - type: enum
+      type: enum?
       symbols: ['p.value', 'q.value', 'signal.value']
-    default: p.value
     doc: IDR ranking method.
     inputBinding:
       prefix: --idr-rank 
@@ -70,37 +65,33 @@ inputs:
       prefix: --blacklist 
 
   ta:
-    type: ["null", File]
+    type: File?
     doc: TAGALIGN file for FRiP.
     inputBinding:
       prefix: --ta 
 
   chrsz:
-    type: ["null", File]
+    type: File?
     doc: 2-col chromosome sizes file.
     inputBinding:
       prefix: --chrsz 
 
   fraglen:
-    type: ["null", int]
-    default: 0
+    type: int?
     doc: Fragment length for TAGALIGN file. If given, do shifted FRiP (for ChIP-Seq).
     inputBinding:
       prefix: --fraglen 
 
   out_dir:
-    type: ["null", string]
-    default: 
+    type: string?
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-    - "null"
-    - type: enum
+      type: enum?
       symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
-    default: INFO
     doc: Log level
     inputBinding:
       prefix: --log-level 
@@ -151,7 +142,7 @@ $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
 s:mainEntity:
-  $import:
+  $import: encode_script_meta.yaml
 
 
 s:softwareRequirements:

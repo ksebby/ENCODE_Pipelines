@@ -1,9 +1,6 @@
 #!/usr/bin/env cwl-runner
-# This tool description was generated automatically by argparse2tool ver. 0.4.3-2
-# To generate again: $ encode_reproducibility_qc.py --generate_cwl_tool
-# Help: $ encode_reproducibility_qc.py --help_arg2cwl
 
-cwlVersion: "cwl:v1.0"
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [python, encode_reproducibility_qc.py]
@@ -30,30 +27,27 @@ inputs:
       prefix: --peaks-pr 
 
   peak_ppr:
-    type: ["null", File]
+    type: File
     doc: Peak file from pooled pseudo replicate.
     inputBinding:
       prefix: --peak-ppr 
 
   prefix:
-    type: ["null", string]
+    type: string?
     doc: Basename prefix for reproducibility QC file.
     inputBinding:
       prefix: --prefix 
 
   out_dir:
-    type: ["null", string]
-    default: 
+    type: string?
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-    - "null"
-    - type: enum
+      type: enum?
       symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
-    default: INFO
     doc: Log level
     inputBinding:
       prefix: --log-level 
@@ -73,7 +67,7 @@ $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
 s:mainEntity:
-  $import:
+  $import: encode_script_meta.yaml
 
 
 s:softwareRequirements:

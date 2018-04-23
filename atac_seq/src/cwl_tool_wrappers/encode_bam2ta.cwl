@@ -1,13 +1,12 @@
 #!/usr/bin/env cwl-runner
-# This tool description was generated automatically by argparse2tool ver. 0.4.3-2
-# To generate again: $ encode_bam2ta.py --generate_cwl_tool
-# Help: $ encode_bam2ta.py --help_arg2cwl
 
-cwlVersion: "cwl:v1.0"
+
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [python, encode_bam2ta.py]
-
+requirements:
+  - class: InlineJavascriptRequirement
 doc: |
   ENCODE DCC BAM 2 TAGALIGN.
 
@@ -20,17 +19,17 @@ inputs:
       position: 1
 
   disable_tn5_shift:
-    type: boolean
-    default: False
+    type: boolean?
     doc: Disable TN5 shifting for DNase-Seq.
     inputBinding:
       prefix: --disable-tn5-shift 
 
   regex_grep_v_ta:
     type: str
-    default: \'chrM\'
+    default: chrM
     doc: Perl-style regular expression pattern to remove matching reads from TAGALIGN.
     inputBinding:
+      valueFrom: ${return "'"+self+"'"}
       prefix: --regex-grep-v-ta 
 
   subsample:
@@ -41,14 +40,13 @@ inputs:
       prefix: --subsample 
 
   paired_end:
-    type: boolean
-    default: False
+    type: boolean?
     doc: Paired-end BAM
     inputBinding:
       prefix: --paired-end 
 
   out_dir:
-    type: ["null", string]
+    type: string?
     default: 
     doc: Output directory.
     inputBinding:
@@ -84,26 +82,8 @@ $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
 s:mainEntity:
-  $import:
+  $import: encode_script_meta.yaml
 
-s:isPartOf:
-  class: s:CreativeWork
-  s:name: Common Workflow Language
-  s:url: http://commonwl.org/
-
-s:author:
-  class: s:Person
-  s:name:
-  s:email: mailto:
-  s:sameAs:
-  - id:
-  s:worksFor:
-  - class: s:Organization
-    s:name:
-    s:location:
-    s:department:
-    - class: s:Organization
-      s:name:
 
 s:softwareRequirements:
   - class: s:SoftwareApplication

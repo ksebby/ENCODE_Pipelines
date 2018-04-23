@@ -1,9 +1,7 @@
 #!/usr/bin/env cwl-runner
-# This tool description was generated automatically by argparse2tool ver. 0.4.3-2
-# To generate again: $ encode_bowtie2.py --generate_cwl_tool
-# Help: $ encode_bowtie2.py --help_arg2cwl
 
-cwlVersion: "cwl:v1.0"
+
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [python, encode_bowtie2.py]
@@ -26,50 +24,41 @@ inputs:
     doc: List of FASTQs (R1 and R2). FASTQs must be compressed with gzip (with .gz).
     inputBinding:
       position: 2
-      separate: True
-      itemSeparator: ' '
 
   score_min:
-    type: string
-    default: ''
+    type: string?
     doc: --score-min for bowtie2.
     inputBinding:
       prefix: --score-min 
 
   paired_end:
-    type: boolean
-    default: False
+    type: boolean?
     doc: Paired-end FASTQs.
     inputBinding:
       prefix: --paired-end 
 
   multimapping:
-    type: int
-    default: 0
+    type: int?
     doc: Multimapping reads (for bowtie2 -k).
     inputBinding:
       prefix: --multimapping 
 
   nth:
-    type: int
-    default: 1
+    type: int?
     doc: Number of threads to parallelize.
     inputBinding:
       prefix: --nth 
 
   out_dir:
-    type: string
-    default: ''
+    type: string?
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-    - "null"
-    - type: enum
+      type: enum?
       symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
-    default: INFO
     doc: Log level
     inputBinding:
       prefix: --log-level 
@@ -102,26 +91,8 @@ $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
 s:mainEntity:
-  $import:
+  $import: encode_script_meta.yaml
 
-s:isPartOf:
-  class: s:CreativeWork
-  s:name: Common Workflow Language
-  s:url: http://commonwl.org/
-
-s:author:
-  class: s:Person
-  s:name:
-  s:email: mailto:
-  s:sameAs:
-  - id:
-  s:worksFor:
-  - class: s:Organization
-    s:name:
-    s:location:
-    s:department:
-    - class: s:Organization
-      s:name:
 
 s:softwareRequirements:
   - class: s:SoftwareApplication

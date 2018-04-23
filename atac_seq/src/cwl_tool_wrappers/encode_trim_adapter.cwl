@@ -1,9 +1,6 @@
 #!/usr/bin/env cwl-runner
-# This tool description was generated automatically by argparse2tool ver. 0.4.3-2
-# To generate again: $ encode_trim_adapter.py --generate_cwl_tool
-# Help: $ encode_trim_adapter.py --help_arg2cwl
 
-cwlVersion: "cwl:v1.0"
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [python, encode_trim_adapter.py]
@@ -22,22 +19,19 @@ inputs:
       position: 1
 
   auto_detect_adapter:
-    type: boolean
-    default: False
+    type: boolean?
     doc: Automatically detect/trim adapters (supported system - Illumina, Nextera and smallRNA).
     inputBinding:
       prefix: --auto-detect-adapter 
 
   min_trim_len:
-    type: int
-    default: 5
+    type: int?
     doc: Minimum trim length for cutadapt -m (throwing away processed reads shorter than this).
     inputBinding:
       prefix: --min-trim-len 
 
   err_rate:
-    type: float
-    default: 0.1
+    type: float?
     doc: Maximum allowed adapter error rate for cutadapt -e (no. errors divided by the length of the matching adapter region).
     inputBinding:
       prefix: --err-rate 
@@ -45,38 +39,32 @@ inputs:
   adapters:
     type: array
     items: File
-
     doc: TSV file path or list of adapter strings. Use TSV for multiple fastqs to be merged later. row=merge_id, col=end_id).
     inputBinding:
       prefix: --adapters 
 
   paired_end:
-    type: boolean
-    default: False
+    type: boolean?
     doc: Paired-end FASTQs.
     inputBinding:
       prefix: --paired-end 
 
   nth:
-    type: int
-    default: 1
+    type: int?
     doc: Number of threads to parallelize.
     inputBinding:
       prefix: --nth 
 
   out_dir:
-    type: ["null", string]
-    default: 
+    type: string?
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-    - "null"
-    - type: enum
+      type: enum?
       symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
-    default: INFO
     doc: Log level
     inputBinding:
       prefix: --log-level 
@@ -97,26 +85,7 @@ $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
 s:mainEntity:
-  $import:
-
-s:isPartOf:
-  class: s:CreativeWork
-  s:name: Common Workflow Language
-  s:url: http://commonwl.org/
-
-s:author:
-  class: s:Person
-  s:name:
-  s:email: mailto:
-  s:sameAs:
-  - id:
-  s:worksFor:
-  - class: s:Organization
-    s:name:
-    s:location:
-    s:department:
-    - class: s:Organization
-      s:name:
+  $import: encode_script_meta.yaml
 
 s:softwareRequirements:
   - class: s:SoftwareApplication

@@ -1,9 +1,6 @@
 #!/usr/bin/env cwl-runner
-# This tool description was generated automatically by argparse2tool ver. 0.4.3-2
-# To generate again: $ encode_pool_ta.py --generate_cwl_tool
-# Help: $ encode_pool_ta.py --help_arg2cwl
 
-cwlVersion: "cwl:v1.0"
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [python, encode_pool_ta.py]
@@ -15,24 +12,23 @@ inputs:
   
   tas:
     type:
-      type: File
-      items: string
+      type: array
+      items: File
 
     doc: List of TAGALIGNs to be pooled.
     inputBinding:
       position: 1
 
   out_dir:
-    type: ["null", string]
-    default: 
+    type: string?
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
-    type: enum
-    symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
-    default: INFO
+    type:
+      type: enum?
+      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 
@@ -54,26 +50,7 @@ $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
 s:mainEntity:
-  $import:
-
-s:isPartOf:
-  class: s:CreativeWork
-  s:name: Common Workflow Language
-  s:url: http://commonwl.org/
-
-s:author:
-  class: s:Person
-  s:name:
-  s:email: mailto:
-  s:sameAs:
-  - id:
-  s:worksFor:
-  - class: s:Organization
-    s:name:
-    s:location:
-    s:department:
-    - class: s:Organization
-      s:name:
+  $import: encode_script_meta.yaml
 
 s:softwareRequirements:
   - class: s:SoftwareApplication

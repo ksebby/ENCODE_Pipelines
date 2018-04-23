@@ -1,21 +1,19 @@
 #!/usr/bin/env cwl-runner
-# This tool description was generated automatically by argparse2tool ver. 0.4.3-2
-# To generate again: $ encode_qc_report.py --generate_cwl_tool
-# Help: $ encode_qc_report.py --help_arg2cwl
 
-cwlVersion: "cwl:v1.0"
+
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [python, encode_qc_report.py]
-
+requirements:
+  - class: InlineJavascriptRequirement
 doc: |
   ENCODE DCC generate HTML report and QC JSON.
 
 inputs:
   
   name:
-    type: ["null", string]
-    default: Untitled
+    type: string?
     doc: Name of sample.
     inputBinding:
       valueFrom: |
@@ -25,8 +23,7 @@ inputs:
       prefix: --name 
 
   desc:
-    type: ["null", string]
-    default: No description
+    type: string?
     doc: Description for sample.
     inputBinding:
       valueFrom: |
@@ -36,8 +33,7 @@ inputs:
       prefix: --desc 
 
   paired_end:
-    type: ["null", boolean]
-    default: False
+    type: boolean?
     doc: Paired-end sample.
     inputBinding:
       prefix: --paired-end 
@@ -64,17 +60,14 @@ inputs:
 
   flagstat_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of flagstat QC (raw BAM) files per replicate.
     inputBinding:
       prefix: --flagstat-qcs 
 
   nodup_flagstat_qcs:
-    type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of flagstat QC (filtered BAM) files per replicate.
     inputBinding:
@@ -82,8 +75,7 @@ inputs:
 
   dup_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of dup QC files per replicate.
     inputBinding:
@@ -91,8 +83,7 @@ inputs:
 
   pbc_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of PBC QC files per replicate.
     inputBinding:
@@ -100,8 +91,7 @@ inputs:
 
   ctl_flagstat_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of flagstat QC (raw BAM) files per control.
     inputBinding:
@@ -109,8 +99,7 @@ inputs:
 
   ctl_nodup_flagstat_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of flagstat QC (filtered BAM) files per control.
     inputBinding:
@@ -118,8 +107,7 @@ inputs:
 
   ctl_dup_qcs:
     type:
-    - "null"
-    - type: array
+      type: array
       items: File
     doc: List of dup QC files per control.
     inputBinding:
@@ -127,8 +115,7 @@ inputs:
 
   ctl_pbc_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of PBC QC files per control.
     inputBinding:
@@ -136,8 +123,7 @@ inputs:
 
   xcor_plots:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of cross-correlation QC plot files per replicate.
     inputBinding:
@@ -145,8 +131,7 @@ inputs:
 
   xcor_scores:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of cross-correlation QC score files per replicate.
     inputBinding:
@@ -154,8 +139,7 @@ inputs:
 
   jsd_plot:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: Fingerprint JSD plot.
     inputBinding:
@@ -163,8 +147,7 @@ inputs:
 
   jsd_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of JSD qc files.
     inputBinding:
@@ -172,8 +155,7 @@ inputs:
 
   idr_plots:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of IDR plot files per a pair of two replicates.
     inputBinding:
@@ -181,8 +163,7 @@ inputs:
 
   idr_plots_pr:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of IDR plot files per replicate.
     inputBinding:
@@ -190,8 +171,7 @@ inputs:
 
   idr_plot_ppr:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
 #Python script specifies multiple arguments. WDL specifies a single file input.
     doc: IDR plot file for pooled pseudo replicate.
@@ -200,8 +180,7 @@ inputs:
 
   frip_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of FRiP score files per replicate.
     inputBinding:
@@ -209,8 +188,7 @@ inputs:
 
   frip_qcs_pr1:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of FRiP score files for 1st pseudo replicates per replicate.
     inputBinding:
@@ -218,8 +196,7 @@ inputs:
 
   frip_qcs_pr2:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of FRiP score files for 2nd pseudo replicates per replicate.
     inputBinding:
@@ -227,8 +204,7 @@ inputs:
 
   frip_qc_pooled:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: string
 #Python script specifies multiple arguments. WDL specifies a single file input.
     doc: FRiP score file for pooled replicates.
@@ -237,8 +213,7 @@ inputs:
 
   frip_qc_ppr1:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
 #Python script specifies multiple arguments. WDL specifies a single file input.
     doc: FRiP score file for 1st pooled pseudo replicates.
@@ -247,18 +222,16 @@ inputs:
 
   frip_qc_ppr2:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
-#Python script specifies multiple arguments. WDL specifies a single file input.
+#Python script specifies multiple arguments. WDL specifies a single file input. Since this wrapper describes the script...
     doc: FRiP score file for 2nd pooled pseudo replicates.
     inputBinding:
       prefix: --frip-qc-ppr2 
 
   frip_idr_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of IDR FRiP score files per a pair of two replicates.
     inputBinding:
@@ -266,8 +239,7 @@ inputs:
 
   frip_idr_qcs_pr:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
 
     doc: List of IDR FRiP score files for pseudo replicates per replicate.
@@ -276,8 +248,7 @@ inputs:
 
   frip_idr_qc_ppr:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
 #Python script specifies multiple arguments. WDL specifies a single file input.
     doc: IDR FRiP score file for pooled pseudo replicates.
@@ -286,8 +257,7 @@ inputs:
 
   frip_overlap_qcs:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of overlapping peak FRiP score files per a pair of two replicates.
     inputBinding:
@@ -295,8 +265,7 @@ inputs:
 
   frip_overlap_qcs_pr:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
     doc: List of overlapping peak FRiP score files for pseudo replicates per replicate.
     inputBinding:
@@ -304,8 +273,7 @@ inputs:
 
   frip_overlap_qc_ppr:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
 #Python script specifies multiple arguments. WDL specifies a single file input.
     doc: Overlapping peak FRiP score file for pooled pseudo replicates.
@@ -314,8 +282,7 @@ inputs:
 
   idr_reproducibility_qc:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
 #Python script specifies multiple arguments. WDL specifies a single file input.
     doc: IDR reproducibility QC file.
@@ -324,8 +291,7 @@ inputs:
 
   overlap_reproducibility_qc:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: File
 #Python script specifies multiple arguments. WDL specifies a single file input.
     doc: Overlapping peak reproducibility QC file.
@@ -334,31 +300,27 @@ inputs:
 
   ataqc_log:
     type:
-    - "null"
-    - type: array
+      type: array?
       items: string
     doc: ATAQC *_qc.txt.
     inputBinding:
       prefix: --ataqc-log 
 
   out_qc_html:
-    type: ["null", string]
-    default: qc.html
+    type: string?
     doc: Output QC report HTML file.
     inputBinding:
       prefix: --out-qc-html 
 
   out_qc_json:
-    type: ["null", string]
-    default: qc.json
+    type: string?
     doc: Output QC JSON file.
     inputBinding:
       prefix: --out-qc-json 
 
   log_level:
     type:
-    - "null"
-    - type: enum
+      type: enum?
       symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
@@ -384,7 +346,7 @@ $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
 s:mainEntity:
-  $import:
+  $import: encode_script_meta.yaml
 
 
 s:softwareRequirements:

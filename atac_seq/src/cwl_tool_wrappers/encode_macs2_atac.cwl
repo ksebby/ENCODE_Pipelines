@@ -1,9 +1,7 @@
 #!/usr/bin/env cwl-runner
-# This tool description was generated automatically by argparse2tool ver. 0.4.3-2
-# To generate again: $ encode_macs2_atac.py --generate_cwl_tool
-# Help: $ encode_macs2_atac.py --help_arg2cwl
 
-cwlVersion: "cwl:v1.0"
+
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [python, encode_macs2_atac.py]
@@ -34,21 +32,19 @@ inputs:
       prefix: --gensz 
 
   pval_thresh:
-    type: float
-    default: 0.01
+    type: float?
     doc: P-Value threshold.
     inputBinding:
       prefix: --pval-thresh 
 
   smooth_win:
-    type: int
-    default: 150
+    type: int?
     doc: Smoothing window size.
     inputBinding:
       prefix: --smooth-win 
 
   cap_num_peak:
-    type: int
+    type: long
     default: 300000
     doc: Capping number of peaks by taking top N peaks.
     inputBinding:
@@ -75,9 +71,9 @@ inputs:
       prefix: --out-dir 
 
   log_level:
-    type: enum
-    symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
-    default: INFO
+    type:
+      type: enum?
+      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level
@@ -133,26 +129,7 @@ $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
 s:mainEntity:
-  $import:
-
-s:isPartOf:
-  class: s:CreativeWork
-  s:name: Common Workflow Language
-  s:url: http://commonwl.org/
-
-s:author:
-  class: s:Person
-  s:name:
-  s:email: mailto:
-  s:sameAs:
-  - id:
-  s:worksFor:
-  - class: s:Organization
-    s:name:
-    s:location:
-    s:department:
-    - class: s:Organization
-      s:name:
+  $import: encode_script_meta.yaml
 
 s:softwareRequirements:
   - class: s:SoftwareApplication

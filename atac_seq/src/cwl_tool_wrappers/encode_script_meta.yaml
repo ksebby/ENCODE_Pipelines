@@ -1,5 +1,22 @@
+s:isPartOf:
+  class: s:CreativeWork
+  s:name: Common Workflow Language
+  s:url: http://commonwl.org/
+
+s:author:
+  class: s:Person
+  s:name: Karl Sebby
+  s:email: mailto:karl.sebby@xdbio.com
+  s:sameAs:
+  - id:
+  s:worksFor:
+  - class: s:Organization
+    s:name: xD Bio, Inc.
+    s:location: Whitefish, MT
+
+
 class: s:SoftwareSourceCode
-s:name: "atac-seq-pipeline"
+s:name:
 s:about: >
   "Python scripts for running ENCODE atac-seq pipeline."
 s:url: https://www.encodeproject.org/atac-seq/
@@ -28,31 +45,6 @@ s:creator:
   s:name: "Stanford"
   s:member:
   - class: s:Person
-    s:name: "Heng Li"
-    s:description: "wrote most of the initial source codes of SAMtools and various converters."
-- class: s:Organization
-  s:name: "Broad Institute"
-  s:member:
-  - class: s:Person
-    s:name: "Bob Handsaker"
-    s:description: |
-      A major contributor to the
-      SAM/BAM specification. He designed and implemented the BGZF format, the
-      underlying indexable compression format for the BAM format. BGZF does
-      not support arithmetic between file offsets.
-- class: s:Organization
-  s:name: "Beijing Genome Institute"
-  s:member:
-  - class: s:Person
-    s:name: "Jue Ruan"
-    s:description: |
-      Designed and implemented the
-      RAZF format, an alternative indexable compression format. RAZF is no longer
-      used by or provided with SAMtools. Source code remains available in older
-      SAMtools 0.1.x releases and from the standalone branch in the repository.
-- class: s:Person
-  s:name: "Colin Hercus"
-  s:description: "updated novo2sam.pl to support gapped alignment by novoalign."
-- class: s:Person
-  s:name: "Petr Danecek"
-  s:description: "contributed the header parsing library sam_header.c and sam2vcf.pl script."
+    s:name: "Jin Lee"
+    s:description:
+-
