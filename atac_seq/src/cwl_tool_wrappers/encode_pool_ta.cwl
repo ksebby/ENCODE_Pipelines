@@ -3,7 +3,7 @@
 cwlVersion: v1.0
 
 class: CommandLineTool
-baseCommand: [python, encode_pool_ta.py]
+baseCommand: encode_pool_ta.py
 
 doc: |
   ENCODE DCC TAGALIGN pooler.
@@ -20,15 +20,16 @@ inputs:
       position: 1
 
   out_dir:
-    type: string?
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-      type: enum?
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 

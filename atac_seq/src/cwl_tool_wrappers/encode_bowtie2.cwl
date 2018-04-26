@@ -4,7 +4,7 @@
 cwlVersion: v1.0
 
 class: CommandLineTool
-baseCommand: [python, encode_bowtie2.py]
+baseCommand: encode_bowtie2.py
 
 doc: |
   ENCODE DCC bowtie2 aligner.
@@ -26,42 +26,43 @@ inputs:
       position: 2
 
   score_min:
-    type: string?
+    type: [string, "null"]
     doc: --score-min for bowtie2.
     inputBinding:
-      prefix: --score-min 
+      prefix: --score-min
 
   paired_end:
-    type: boolean?
+    type: [boolean, "null"]
     doc: Paired-end FASTQs.
     inputBinding:
       prefix: --paired-end 
 
   multimapping:
-    type: int?
+    type: [int, "null"]
     doc: Multimapping reads (for bowtie2 -k).
     inputBinding:
       prefix: --multimapping 
 
   nth:
-    type: int?
+    type: [int, "null"]
     doc: Number of threads to parallelize.
     inputBinding:
       prefix: --nth 
 
   out_dir:
-    type: string?
+    type: [string, "null"]
     doc: Output directory.
     inputBinding:
-      prefix: --out-dir 
+      prefix: --out-dir
 
   log_level:
     type:
-      type: enum?
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
-      prefix: --log-level 
+      prefix: --log-level
 
 
 outputs:

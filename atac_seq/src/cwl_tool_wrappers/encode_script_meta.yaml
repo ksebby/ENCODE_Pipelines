@@ -19,24 +19,17 @@ class: s:SoftwareSourceCode
 s:name:
 s:about: >
   "Python scripts for running ENCODE atac-seq pipeline."
-s:url: https://www.encodeproject.org/atac-seq/
-s:codeRepository: https://github.com/ENCODE-DCC/atac-seq-pipeline
+s:url: {s:name: encode project atac-seq pipeline, s:url: https://www.encodeproject.org/atac-seq/}
+s:codeRepository: {0: {s:name: github, s:url: https://github.com/ENCODE-DCC/atac-seq-pipeline}}
 
-s:license:
-- https://opensource.org/licenses/MIT
+s:license: {0: {s:name: MIT, s:url: https://opensource.org/licenses/MIT}}
 
 s:targetProduct:
   class: s:SoftwareApplication
-  s:softwareVersion:
+  s:softwareVersion: 1.0
   s:applicationCategory: "commandline tool"
 
 s:programmingLanguage: "Python"
-
-s:publication:
-- class: s:ScholarlyArticle
-  id:
-  s:name:
-  s:url:
 
 s:discussionUrl:
 
@@ -47,4 +40,3 @@ s:creator:
   - class: s:Person
     s:name: "Jin Lee"
     s:description:
--

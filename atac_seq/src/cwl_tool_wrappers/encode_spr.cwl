@@ -4,7 +4,7 @@
 cwlVersion: v1.0
 
 class: CommandLineTool
-baseCommand: [python, encode_spr.py]
+baseCommand: encode_spr.py
 
 doc: |
   ENCODE DCC pseudo replicator.
@@ -18,21 +18,22 @@ inputs:
       position: 1
 
   paired_end:
-    type: boolean?
+    type: ["null", boolean]
     doc: Paired-end TAGALIGN.
     inputBinding:
       prefix: --paired-end 
 
   out_dir:
-    type: string?
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-      type: enum
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 

@@ -19,19 +19,19 @@ inputs:
       position: 1
 
   auto_detect_adapter:
-    type: boolean?
+    type: ["null", boolean]
     doc: Automatically detect/trim adapters (supported system - Illumina, Nextera and smallRNA).
     inputBinding:
       prefix: --auto-detect-adapter 
 
   min_trim_len:
-    type: int?
+    type: ["null", int]
     doc: Minimum trim length for cutadapt -m (throwing away processed reads shorter than this).
     inputBinding:
       prefix: --min-trim-len 
 
   err_rate:
-    type: float?
+    type: ["null", float]
     doc: Maximum allowed adapter error rate for cutadapt -e (no. errors divided by the length of the matching adapter region).
     inputBinding:
       prefix: --err-rate 
@@ -44,27 +44,28 @@ inputs:
       prefix: --adapters 
 
   paired_end:
-    type: boolean?
+    type: ["null", boolean]
     doc: Paired-end FASTQs.
     inputBinding:
       prefix: --paired-end 
 
   nth:
-    type: int?
+    type: ["null", int]
     doc: Number of threads to parallelize.
     inputBinding:
       prefix: --nth 
 
   out_dir:
-    type: string?
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-      type: enum?
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 

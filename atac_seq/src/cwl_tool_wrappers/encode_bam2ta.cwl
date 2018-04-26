@@ -4,7 +4,7 @@
 cwlVersion: v1.0
 
 class: CommandLineTool
-baseCommand: [python, encode_bam2ta.py]
+baseCommand: encode_bam2ta.py
 requirements:
   - class: InlineJavascriptRequirement
 doc: |
@@ -19,7 +19,7 @@ inputs:
       position: 1
 
   disable_tn5_shift:
-    type: boolean?
+    type: ["null", boolean]
     doc: Disable TN5 shifting for DNase-Seq.
     inputBinding:
       prefix: --disable-tn5-shift 
@@ -40,14 +40,13 @@ inputs:
       prefix: --subsample 
 
   paired_end:
-    type: boolean?
+    type: ["null", boolean]
     doc: Paired-end BAM
     inputBinding:
       prefix: --paired-end 
 
   out_dir:
-    type: string?
-    default: 
+    type: [null, string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
@@ -60,9 +59,10 @@ inputs:
       prefix: --nth 
 
   log_level:
-    type: enum
-    symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
-    default: INFO
+    type:
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 

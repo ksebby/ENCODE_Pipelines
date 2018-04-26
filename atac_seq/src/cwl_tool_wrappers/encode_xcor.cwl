@@ -17,32 +17,32 @@ inputs:
       position: 1
 
   subsample:
-    type: int?
+    type: ["null", int]
     doc: Subsample TAGALIGN.
     inputBinding:
       prefix: --subsample 
 
   speak:
-    type: int?
+    type: ["null", int]
     doc: User-defined cross-corr. peak strandshift (-speak= in run_spp.R). Disabled if -1.
     inputBinding:
       prefix: --speak=
       separate: False
 
   paired_end:
-    type: boolean?
+    type: ["null", boolean]
     doc: Paired-end TAGALIGN.
     inputBinding:
       prefix: --paired-end 
 
   nth:
-    type: int?
+    type: ["null", int]
     doc: Number of threads to parallelize.
     inputBinding:
       prefix: --nth 
 
   out_dir:
-    type: string?
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 

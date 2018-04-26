@@ -3,7 +3,7 @@
 cwlVersion: v1.0
 
 class: CommandLineTool
-baseCommand: [python, encode_reproducibility_qc.py]
+baseCommand: encode_reproducibility_qc.py
 
 doc: |
   ENCODE DCC reproducibility QC. IDR peak or overlap peak only.
@@ -33,21 +33,22 @@ inputs:
       prefix: --peak-ppr 
 
   prefix:
-    type: string?
+    type: ["null", string]
     doc: Basename prefix for reproducibility QC file.
     inputBinding:
       prefix: --prefix 
 
   out_dir:
-    type: string?
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-      type: enum?
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum?
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 

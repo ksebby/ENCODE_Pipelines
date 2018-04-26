@@ -3,7 +3,7 @@
 cwlVersion: v1.0
 
 class: CommandLineTool
-baseCommand: [python, encode_naive_overlap.py]
+baseCommand: encode_naive_overlap.py
 requirements:
   - class: InlineJavascriptRequirement
 doc: |
@@ -30,21 +30,22 @@ inputs:
       position: 3
 
   prefix:
-    type: string?
+    type: ["null", string]
     doc: Prefix basename for output overlap peak.
     inputBinding:
       prefix: --prefix 
 
   peak_type:
     type:
-      type: enum?
-      symbols: ['narrowPeak', 'regionPeak', 'broadPeak', 'gappedPeak']
+      - "null"
+      - type: enum
+        symbols: ['narrowPeak', 'regionPeak', 'broadPeak', 'gappedPeak']
     doc: Peak file type.
     inputBinding:
       prefix: --peak-type 
 
   nonamecheck:
-    type: boolean?
+    type: ["null", boolean]
     doc: bedtools intersect -nonamecheck. use this if you get bedtools intersect naming convenction warnings/errors).
     inputBinding:
       prefix: --nonamecheck 
@@ -56,7 +57,7 @@ inputs:
       prefix: --blacklist 
 
   ta:
-    type: File?
+    type: ["null", File]
     doc: TAGALIGN file for FRiP.
     inputBinding:
       prefix: --ta 
@@ -68,21 +69,22 @@ inputs:
       prefix: --chrsz 
 
   fraglen:
-    type: int?
+    type: ["null", int]
     doc: Fragment length for TAGALIGN file. If given, do shifted FRiP (for ChIP-Seq).
     inputBinding:
       prefix: --fraglen 
 
   out_dir:
-    type: string?
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-      type: enum?
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 

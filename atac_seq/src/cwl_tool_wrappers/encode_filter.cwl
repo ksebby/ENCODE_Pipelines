@@ -22,52 +22,54 @@ inputs:
 
   dup_marker:
     type:
-      type: enum?
-      symbols: ['picard', 'sambamba']
+      - "null"
+      - type: enum
+        symbols: ['picard', 'sambamba']
     doc: Dupe marker for filtering mapped reads in BAM.
     inputBinding:
       prefix: --dup-marker 
 
   mapq_thresh:
-    type: int?
+    type: ["null", int]
     doc: Threshold for low MAPQ reads removal.
     inputBinding:
       prefix: --mapq-thresh 
 
   no_dup_removal:
-    type: boolean?
+    type: ["null", boolean]
     doc: No dupe reads removal when filtering BAM.
     inputBinding:
       prefix: --no-dup-removal 
 
   paired_end:
-    type: boolean?
+    type: ["null", boolean]
     doc: Paired-end BAM.
     inputBinding:
       prefix: --paired-end 
 
   multimapping:
-    type: int?
+    type: ["null", int]
     doc: Multimapping reads.
     inputBinding:
       prefix: --multimapping 
 
   nth:
-    type: int?
+    type: ["null", int]
     doc: Number of threads to parallelize.
     inputBinding:
       prefix: --nth 
 
   out_dir:
-    type: string?
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-      type: enum?
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 

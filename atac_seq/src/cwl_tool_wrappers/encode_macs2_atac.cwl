@@ -4,7 +4,7 @@
 cwlVersion: v1.0
 
 class: CommandLineTool
-baseCommand: [python, encode_macs2_atac.py]
+baseCommand: encode_macs2_atac.py
 
 requirements:
   - class: InlineJavaScriptRequirement
@@ -32,27 +32,25 @@ inputs:
       prefix: --gensz 
 
   pval_thresh:
-    type: float?
+    type: ["null", float]
     doc: P-Value threshold.
     inputBinding:
       prefix: --pval-thresh 
 
   smooth_win:
-    type: int?
+    type: ["null", int]
     doc: Smoothing window size.
     inputBinding:
       prefix: --smooth-win 
 
   cap_num_peak:
-    type: long
-    default: 300000
+    type: ["null", long]
     doc: Capping number of peaks by taking top N peaks.
     inputBinding:
       prefix: --cap-num-peak 
 
   make_signal:
-    type: boolean
-    default: True
+    type: ["null", boolean]
     doc: Generate signal tracks for P-Value and fold enrichment.
     inputBinding:
       prefix: --make-signal 
@@ -64,16 +62,16 @@ inputs:
       prefix: --blacklist 
 
   out_dir:
-    type: string
-    default: ""
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-      type: enum?
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level

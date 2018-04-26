@@ -31,7 +31,7 @@ inputs:
       position: 3
 
   prefix:
-    type: string?
+    type: ["null", string]
     doc: Prefix basename for output IDR peak.
     inputBinding:
       prefix: --prefix 
@@ -45,15 +45,16 @@ inputs:
       prefix: --peak-type 
 
   idr_thresh:
-    type: float?
+    type: ["null", float]
     doc: IDR threshold.
     inputBinding:
       prefix: --idr-thresh 
 
   idr_rank:
     type:
-      type: enum?
-      symbols: ['p.value', 'q.value', 'signal.value']
+      - "null"
+      - type: enum
+        symbols: ['p.value', 'q.value', 'signal.value']
     doc: IDR ranking method.
     inputBinding:
       prefix: --idr-rank 
@@ -65,33 +66,34 @@ inputs:
       prefix: --blacklist 
 
   ta:
-    type: File?
+    type: ["null", File]
     doc: TAGALIGN file for FRiP.
     inputBinding:
       prefix: --ta 
 
   chrsz:
-    type: File?
+    type: ["null", File]
     doc: 2-col chromosome sizes file.
     inputBinding:
       prefix: --chrsz 
 
   fraglen:
-    type: int?
+    type: ["null", int]
     doc: Fragment length for TAGALIGN file. If given, do shifted FRiP (for ChIP-Seq).
     inputBinding:
       prefix: --fraglen 
 
   out_dir:
-    type: string?
+    type: ["null", string]
     doc: Output directory.
     inputBinding:
       prefix: --out-dir 
 
   log_level:
     type:
-      type: enum?
-      symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
+      - "null"
+      - type: enum
+        symbols: ['NOTSET', 'DEBUG', 'INFO', 'WARNING', 'CRITICAL', 'ERROR', 'CRITICAL']
     doc: Log level
     inputBinding:
       prefix: --log-level 
